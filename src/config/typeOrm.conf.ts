@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 
 import { createUsersTable1661503837395 } from '../database/migrations/1661503837395-create_users_table';
+import { CreateRolesTable1661514510395 } from '../database/migrations/1661514510395-CreateRolesTable';
 
 config();
 
@@ -15,5 +16,5 @@ export default new DataSource({
   username: 'root',
   password: 'root',
   database: 'test_nuxt',
-  migrations: [createUsersTable1661503837395],
+  migrations: [createUsersTable1661503837395, CreateRolesTable1661514510395],
 });

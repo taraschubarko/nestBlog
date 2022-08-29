@@ -20,4 +20,8 @@ export class UserService implements UserInterface {
     user.name = name;
     return this.usersRepository.save(user);
   }
+
+  findAll() {
+    return this.usersRepository.find();
+  }
 }

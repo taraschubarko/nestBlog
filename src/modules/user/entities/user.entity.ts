@@ -1,4 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  OneToMany,
+  JoinTable,
+} from 'typeorm';
+import { ConfigService } from '@nestjs/config';
+import { PasswordTransformer } from './transformers/password.transformer';
+import { Role } from '../../role/entities/role.entity';
 
 @Entity('users')
 export class User {
@@ -11,7 +22,9 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
+  @Column({
+    transformer: new PasswordTransformer(new ConfigService()),
+  })
   password: string;
 
   @UpdateDateColumn()
@@ -19,4 +32,18 @@ export class User {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @OneToMany(() => Role, (role) => role.users)
+  @JoinTable({
+    name: 'role_user',
+    joinColumn: {
+      name: 'user_id',
+      referencedColumnName: 'id',
+    },
+    inverseJoinColumn: {
+      name: 'role_id',
+      referencedColumnName: 'id',
+    },
+  })
+  roles: Role[];
 }
