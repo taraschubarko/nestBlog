@@ -24,14 +24,9 @@ export class UserService implements UserInterface {
   }
 
   async findAll(): Promise<object> {
-    const users = this.usersRepository.find();
-    const user = await this.usersRepository.findOne({ where: { id: 1 } });
-    // const role = await this.roleService.findOne(1);
-    // const role2 = await this.roleService.findOne(2);
-    // user.name = 'tarik';
-    // user.roles = [role, role2];
-    //
-    // await this.usersRepository.save(user);
-    return users;
+    return this.usersRepository.find({
+      select: ['id', 'name', 'email'],
+      //relations: ['roles'],
+    });
   }
 }

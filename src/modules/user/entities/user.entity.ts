@@ -25,6 +25,7 @@ export class User {
 
   @Column({
     transformer: new PasswordTransformer(new ConfigService()),
+    select: false,
   })
   password: string;
 
@@ -35,7 +36,7 @@ export class User {
   created_at: Date;
 
   @ManyToMany(() => Role, (role) => role.users, {
-    eager: true,
+    // eager: true,
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
