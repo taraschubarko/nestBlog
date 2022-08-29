@@ -1,12 +1,11 @@
 import {
   Controller,
   Get,
-  Param,
-  ParseIntPipe,
-  DefaultValuePipe,
-  Query,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -15,5 +14,11 @@ export class UserController {
   @Get('all')
   getUser(): object {
     return this.usersService.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
   }
 }
