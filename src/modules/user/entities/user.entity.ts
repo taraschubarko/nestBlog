@@ -25,7 +25,6 @@ export class User {
 
   @Column({
     transformer: new PasswordTransformer(new ConfigService()),
-    select: false,
   })
   password: string;
 
