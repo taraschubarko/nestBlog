@@ -1,4 +1,4 @@
 export interface UserInterface {
   create({ name: name });
-  findAll();
+  findAll(): object;
 }

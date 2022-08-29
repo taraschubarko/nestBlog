@@ -6,7 +6,8 @@ import databaseConf from './config/database.conf';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/user/user.module';
 import { RoleModule } from './modules/role/role.module';
-
+import { DataSource } from 'typeorm';
+import ormconfig from '../ormconfig';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -26,4 +27,6 @@ import { RoleModule } from './modules/role/role.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}

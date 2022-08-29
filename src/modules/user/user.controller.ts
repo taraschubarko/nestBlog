@@ -14,7 +14,8 @@ export class UserController {
   constructor(private readonly usersService: UserService) {}
 
   @Get()
-  getUser(): Promise<User> {
-    return this.usersService.create({ name: 'tarik1' });
+  getUser(): object {
+    //return this.usersService.create({ name: 'tarik1' });
+    return this.usersService.findAll();
   }
 }

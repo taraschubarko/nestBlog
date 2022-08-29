@@ -9,6 +9,8 @@ export default {
   password: 'root',
   database: 'test_nuxt',
   entities: [User, Role],
+  autoLoadEntities: true,
+  synchronize: true,
   //seeds: ['src/database/seeds/**/*{.ts,.js}'],
   seeds: [
     //'src/database/seeds/user.seed.ts',

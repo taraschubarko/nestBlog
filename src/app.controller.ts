@@ -13,6 +13,6 @@ export class AppController {
 
   @Get('/test')
   test(): string {
-    return this.conf.get('mysql');
+    return 'sss';
   }
 }

@@ -4,6 +4,8 @@ import { config } from 'dotenv';
 
 import { createUsersTable1661503837395 } from '../database/migrations/1661503837395-create_users_table';
 import { CreateRolesTable1661514510395 } from '../database/migrations/1661514510395-CreateRolesTable';
+import { User } from '../modules/user/entities/user.entity';
+import { Role } from '../modules/role/entities/role.entity';
 
 config();
 
@@ -16,5 +18,6 @@ export default new DataSource({
   username: 'root',
   password: 'root',
   database: 'test_nuxt',
+  entities: [User, Role],
   migrations: [createUsersTable1661503837395, CreateRolesTable1661514510395],
 });

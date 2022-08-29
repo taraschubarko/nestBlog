@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
   JoinTable,
+  ManyToMany,
 } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { PasswordTransformer } from './transformers/password.transformer';
@@ -33,7 +34,12 @@ export class User {
   @CreateDateColumn()
   created_at: Date;
 
-  @OneToMany(() => Role, (role) => role.users)
+  @ManyToMany(() => Role, (role) => role.users, {
+    eager: true,
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinTable({
     name: 'role_user',
     joinColumn: {
