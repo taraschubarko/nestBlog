@@ -11,23 +11,8 @@ export class RoleService {
     @InjectRepository(Role)
     private readonly roleRepository: Repository<Role>,
   ) {}
-  create(createRoleDto: CreateRoleDto) {
-    return 'This action adds a new role';
-  }
-
-  findAll() {
-    return `This action returns all role`;
-  }
 
   findOne(id: number) {
     return this.roleRepository.findOne({ where: { id: id } });
-  }
-
-  update(id: number, updateRoleDto: UpdateRoleDto) {
-    return `This action updates a #${id} role`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} role`;
   }
 }
