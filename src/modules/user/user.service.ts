@@ -25,8 +25,12 @@ export class UserService implements UserInterface {
 
   async findAll(): Promise<object> {
     return this.usersRepository.find({
-      select: ['id', 'name', 'email'],
+      select: ['id', 'name', 'email', 'created_at'],
       //relations: ['roles'],
     });
+  }
+
+  findByEmail(email: string) {
+    return this.usersRepository.findOneBy({ email: email });
   }
 }
