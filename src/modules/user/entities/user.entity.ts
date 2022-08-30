@@ -11,6 +11,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { PasswordTransformer } from './transformers/password.transformer';
 import { Role } from '../../role/entities/role.entity';
+import { Blog } from '../../blog/entities/blog.entity';
 
 @Entity('users')
 export class User {
@@ -52,4 +53,7 @@ export class User {
     },
   })
   roles: Role[];
+
+  @OneToMany(() => Blog, (blog) => blog.user)
+  posts: Blog[];
 }

@@ -6,6 +6,8 @@ import { createUsersTable1661503837395 } from '../database/migrations/1661503837
 import { CreateRolesTable1661514510395 } from '../database/migrations/1661514510395-CreateRolesTable';
 import { User } from '../modules/user/entities/user.entity';
 import { Role } from '../modules/role/entities/role.entity';
+import { Blog } from '../modules/blog/entities/blog.entity';
+import { CreateBlogsTable1661840986569 } from '../database/migrations/1661840986569-CreateBlogsTable';
 
 config();
 
@@ -18,6 +20,10 @@ export default new DataSource({
   username: 'root',
   password: 'root',
   database: 'test_nuxt',
-  entities: [User, Role],
-  migrations: [createUsersTable1661503837395, CreateRolesTable1661514510395],
+  entities: [User, Role, Blog],
+  migrations: [
+    createUsersTable1661503837395,
+    CreateRolesTable1661514510395,
+    CreateBlogsTable1661840986569,
+  ],
 });

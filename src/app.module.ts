@@ -8,6 +8,7 @@ import { UsersModule } from './modules/user/user.module';
 import { RoleModule } from './modules/role/role.module';
 import { DataSource } from 'typeorm';
 import { AuthModule } from './modules/auth/auth.module';
+import { BlogModule } from './modules/blog/blog.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from './modules/auth/auth.module';
     UsersModule,
     RoleModule,
     AuthModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService],
